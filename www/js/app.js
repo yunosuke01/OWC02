@@ -12,7 +12,7 @@
 
   // vue-onsenui
   Vue.use(VueOnsen);
-
+//test
   // Vue
   new Vue({
     el: '#app',
