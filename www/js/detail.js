@@ -1,6 +1,5 @@
 var detailPage = {
   name: 'detail',
-  address:'detail',
   props: {
     user: {}
   },
@@ -28,16 +27,53 @@ var detailPage = {
           <input type="file" name="photo" @change="fileChange($event)" accept="image/*" />
         </v-ons-list-item>
       </v-ons-list>
+
       <v-ons-list>
-        <v-ons-list-header>名前</v-ons-list-header>
+        <v-ons-list-header>農園・農家のお名前</v-ons-list-header>
         <v-ons-list-item>
-          <v-ons-input placeholder="名前" v-model="name"></v-ons-input>
+          <v-ons-input placeholder="例：OWC農園" v-model="name"></v-ons-input>
         </v-ons-list-item>
       </v-ons-list>
+
+      <v-ons-list>
+      <v-ons-list-header>作業内容</v-ons-list-header>
+        <v-ons-list-item>
+          <v-ons-input placeholder="例：田植え" v-model="content"></v-ons-input>
+        </v-ons-list-item>
+      </v-ons-list>
+
       <v-ons-list>
         <v-ons-list-header>住所</v-ons-list-header>
         <v-ons-list-item>
-          <v-ons-input placeholder="住所" v-model="address"></v-ons-input>
+          <v-ons-input placeholder="例：〇〇県△△市〇〇△-△-△" v-model="address"></v-ons-input>
+        </v-ons-list-item>
+      </v-ons-list>
+      
+      <v-ons-list>
+        <v-ons-list-header>受付期間</v-ons-list-header>
+        <v-ons-list-item>
+          <v-ons-input placeholder="例：11/20~11/28" v-model="term"></v-ons-input>
+        </v-ons-list-item>
+      </v-ons-list>
+
+      <v-ons-list>
+        <v-ons-list-header>体験期間</v-ons-list-header>
+        <v-ons-list-item>
+          <v-ons-input placeholder="例：1日〜相談可" v-model="time"></v-ons-input>
+        </v-ons-list-item>
+      </v-ons-list>
+
+      <v-ons-list>
+        <v-ons-list-header>紹介文</v-ons-list-header>
+        <v-ons-list-item>
+          <v-ons-input placeholder="ここに記入してください" v-model="invite"></v-ons-input>
+        </v-ons-list-item>
+      </v-ons-list>
+
+      <v-ons-list>
+        <v-ons-list-header>持ち物</v-ons-list-header>
+        <v-ons-list-item>
+          <v-ons-input placeholder="例：着替え、長靴、飲み物" v-model="bring"></v-ons-input>
         </v-ons-list-item>
       </v-ons-list>
     </v-ons-page>
@@ -45,13 +81,19 @@ var detailPage = {
   data() {
     return {
       name: this.user.name,
+      content: this.user.content,
       address: this.user.address,
+      term: this.user.term,
+      time: this.user.time,
+      invite: this.user.invite,
+      bring: this.user.bring,
     };
   },
   methods: {
     fileChange: function (e) {
       this.photo = e.target.files[0];
     },
+    
     save: function () {
       if (this.user.id) {
         this.update();
@@ -70,7 +112,12 @@ var detailPage = {
           imagesRef.getDownloadURL().then(function(url) {
             var u = {
               name: vm.name,
+              content: vm.content,
               address: vm.address,
+              term: vm.term,
+              time: vm.time,
+              invite: vm.invite,
+              bring: vm.bring,
               photoFileName: filename,
               photoUrl: url
             }
@@ -82,7 +129,12 @@ var detailPage = {
       } else {
         var u = {
           name: vm.name,
+          content: vm.content,
           address: vm.address,
+          term: vm.term,
+          time: vm.time,
+          invite: vm.invite,
+          bring: vm.bring,
           photoFileName: filename,
           photoUrl: url
         }
@@ -102,7 +154,12 @@ var detailPage = {
           imagesRef.getDownloadURL().then(function(url) {
             var u = {
               name: vm.name,
+              content: vm.content,
               address: vm.address,
+              term: vm.term,
+              time: vm.time,
+              invite: vm.invite,
+              bring: vm.bring,
               photoFileName: filename,
               photoUrl: url
             }
@@ -119,7 +176,12 @@ var detailPage = {
       } else {
         var u = {
           name: vm.name,
+          content: vm.content,
           address: vm.address,
+          term: vm.term,
+          time: vm.time,
+          invite: vm.invite,
+          bring: vm.bring,
           photoFileName: vm.user.photoFileName,
           photoUrl: vm.user.photoUrl,
         }
