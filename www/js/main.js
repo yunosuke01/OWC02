@@ -2,18 +2,24 @@ var mainPage = {
   name: 'main',
   template: `
     <v-ons-page>
-      <v-ons-toolbar>
-        <div class="center">一覧</div>
+      <v-ons-toolbar style="color:white;background-color: #ffffff;box-shadow: 0 2px 4px rgba(0,0,0,0.3);" >
+        <div class="left" style="background-image:url('./images/toolbar-image-clear.png');padding:0px;margin:0px;width:100px;"></div>
         <div class="right">
-          <v-ons-toolbar-button @click="goDetailPage($event)">掲載する</v-ons-toolbar-button>
+          <v-ons-toolbar-button style="color: white;background-color: #228b22; padding: 1px; border-radius: 25px;margin: 0 auto;" @click="goDetailPage($event)">農カツを掲載</v-ons-toolbar-button>
         </div>
       </v-ons-toolbar>
       <v-ons-list>
-        <v-ons-list-item tappable v-for="user in users" :key="user.id" @click="goDisplayPage(user)">
-          <div class="left">
-            <img :src="user.photoUrl" width="64px" style="width: 64px;">
-          </div>
-          <div class="center">{{user.name}}<br>{{user.content}}<br>{{user.address}}<br>{{user.term}}<br>{{user.time}}<br>{{user.invite}}<br>{{user.bring}}</div>
+        <v-ons-list-item  v-for="user in users" :key="user.id" @click="goDisplayPage(user)">
+          <div class>
+            <img :src="user.photoUrl" width="100%" height="auto" style="border-radius:8px;">
+            <span style="color:1a961e; line-height:150%;">農業体験 / {{user.content}}</span>
+         <br>
+         <span style="font-weight:bold; line-height:150%;">{{user.name}}</span>
+         <br>
+         <span style="line-height:150%;">📍{{user.address}}</span>
+         <br>
+         <span style="line-height:150%;">🗓{{user.term}}</span>
+         <span style="line-height:150%;">　　　⌚️{{user.time}}</span></div>
         </ons-list-item>
       </v-ons-list>
     </v-ons-page>
